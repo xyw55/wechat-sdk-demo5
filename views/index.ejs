@@ -21,13 +21,14 @@
 
         </div>
         <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-        <script type="text/javascript" src="index.js"></script>
         <script type="text/javascript">
+            console.log(signatureMap);
             var signature = signatureMap.signature;
             var nonceStr = signatureMap.noncestr;
             var timestamp = signatureMap.timestamp;
             var appId = signatureMap.appId;
             var jsapi_ticket = signatureMap.jsapi_ticket;
         </script>
+        <script type="text/javascript" src="index.js"></script>
 <%- include footer%>
  
