@@ -1,0 +1,33 @@
+<%- include header %>
+        <div class="panel">
+            <h5>1.判断是否支持特定JS-API</h5>
+            <button id="checkJsApi">checkJsApi</button>
+
+            <h5>2.分享接口</h5>
+            <button id="onMenuShareAppMessage">发送给朋友</button>
+        
+            <h5>3.图像接口</h5>    
+            <button id="chooseImage">选择图片</button>
+        
+            <button id="previewImage">预览图片</button>
+        
+            <h5>获取位置</h5>
+            <button id="getLocation">获取位置</button>
+        
+            <h5>微信扫一扫</h5>
+            <button id="scanQRCode0">微信扫一扫</button>
+        
+            <button id="refresh">刷新当前页面</button>
+
+        </div>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script type="text/javascript" src="index.js"></script>
+        <script type="text/javascript">
+            var signature = '#{signature}';
+            var nonceStr = '#{noncestr}';
+            var timestamp = '#{timestamp}';
+            var appId = '#{appId}';
+            var jsapi_ticket = '#{jsapi_ticket}';
+        </script>
+<%- include footer%>
+ 
