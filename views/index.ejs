@@ -23,9 +23,9 @@
         <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
         <script type="text/javascript">
             var signatureMap = "<%= JSON.stringify(signatureMap) %>";
-            console.log(signatureMap.replace("&#34;", "\""));
+            console.log(signatureMap.replace(/&#34;/g, "\""));
 
-            signatureMap = JSON.parse(signatureMap);
+            signatureMap = JSON.parse(signatureMap.replace(/&#34;/g, "\""));
             console.log(signatureMap);
 
             var signature = signatureMap.signature;
