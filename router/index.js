@@ -13,7 +13,7 @@ exports.init = function (app) {
 		console.log(req);
 		signature.sign(url,function(signatureMap){
 			signatureMap.appId = wechat_cfg.appid;
-			res.render('index',signatureMap);
+			res.render('index',{"signatureMap":signatureMap});
 		});
 	});
 
