@@ -20,14 +20,14 @@
             <button id="refresh">刷新当前页面</button>
 
         </div>
-    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
         <script type="text/javascript" src="index.js"></script>
         <script type="text/javascript">
-            var signature = '#{signature}';
-            var nonceStr = '#{noncestr}';
-            var timestamp = '#{timestamp}';
-            var appId = '#{appId}';
-            var jsapi_ticket = '#{jsapi_ticket}';
+            var signature = signatureMap.signature;
+            var nonceStr = signatureMap.noncestr;
+            var timestamp = signatureMap.timestamp;
+            var appId = signatureMap.appId;
+            var jsapi_ticket = signatureMap.jsapi_ticket;
         </script>
 <%- include footer%>
  
