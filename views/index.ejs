@@ -23,7 +23,11 @@
         <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
         <script type="text/javascript">
             var signatureMap = "<%= JSON.stringify(signatureMap) %>";
+            console.log(signatureMap.replace("&#34;", "\""));
+
+            signatureMap = JSON.parse(signatureMap);
             console.log(signatureMap);
+
             var signature = signatureMap.signature;
             var nonceStr = signatureMap.noncestr;
             var timestamp = signatureMap.timestamp;
