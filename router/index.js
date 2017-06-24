@@ -19,8 +19,8 @@ exports.init = function (app) {
 
 	app.get('/auth',function(req,res){
 		//var url = req.protocol + '://' + req.host + req.path;
-		var url = req.protocol + '://' + req.host + req.originalUrl; //获取当前url
-		console.log(url);
+		var myurl = req.protocol + '://' + req.host + req.originalUrl; //获取当前url
+		console.log(myurl);
 		var code = url.parse(req.url,true).query.code;
         var link = 'https://qyapi.weixin.qq.com/cgi-bin/user/getuserinfo?access_token='+token+'&code='+code;
         console.log(new Date()+' and the code is '+code+' Now getting the Number...');
