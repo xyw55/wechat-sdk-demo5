@@ -43,7 +43,8 @@ exports.init = function (app) {
                 }else{
                     console.dir(body);
                 }
-            }
-	});
+            });
+		});
+    }
 
 };
