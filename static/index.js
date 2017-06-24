@@ -52,7 +52,10 @@ wx.ready(function(){
     wx.checkJsApi({
       jsApiList: [
         'getNetworkType',
-        'previewImage'
+        'previewImage',
+        'openLocation',
+        'getLocation',
+        'hideOptionMenu'
       ],
       success: function (res) {
         alert(JSON.stringify(res));
