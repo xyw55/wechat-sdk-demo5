@@ -21,7 +21,7 @@ exports.sign = function (url,callback) {
 		request(config.accessTokenUrl ,function(error, response, body){
 			if (!error && response.statusCode == 200) {
 				var tokenMap = JSON.parse(body);
-				request(config.ticketUrl + '?access_token=' + tokenMap.access_token + '&type=jsapi', function(error, resp, json){
+				request(config.ticketUrl + '?access_token=' + tokenMap.access_token, function(error, resp, json){
 					if (!error && response.statusCode == 200) {
 						var ticketMap = JSON.parse(json);
 						cache.put('ticket',ticketMap.ticket,config.cache_duration);  //加入缓存
