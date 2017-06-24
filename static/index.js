@@ -147,9 +147,9 @@ wx.ready(function(){
   document.querySelector('#post').onclick = function () {
     wx.getLocation({
       success: function (res) {
-        alert(JSON.stringify(res));
+        // alert(JSON.stringify(res));
         console.log(JSON.stringify(res));
-        var inputdata = {"userId":userId, "res": JSON.stringify(res)};
+        var inputdata = {"userId":"111", "res": JSON.stringify(res)};
         $.StandardPost("/location",inputdata);
       },
       cancel: function (res) {
