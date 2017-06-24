@@ -5,6 +5,7 @@ exports.init = function (app) {
 	var sha1 = require('sha1'); //签名算法
 	//var url = require('url');
 	var signature = require('../sign/signature');
+	var url = require('url');
 
 	
 	app.get('/',function(req,res){
