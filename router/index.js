@@ -27,6 +27,7 @@ exports.init = function (app) {
 		var token = "";
 		getToken(appID, appSecret).then(function(res){
     		token = res.access_token;
+    		console.log(res, token);
     	});
 
 		//var url = req.protocol + '://' + req.host + req.path;
