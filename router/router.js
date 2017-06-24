@@ -59,15 +59,14 @@ exports.init = function (app) {
     });
 
 
-
-
     app.post('/location',function(req,res){
 		//var url = req.protocol + '://' + req.host + req.path;
 		var url = req.protocol + '://' + req.host + req.originalUrl; //获取当前url
-		console.log(url);
-		console.log(req);
+		console.log(req.body);
+
 		signature.sign(url,function(signatureMap){
 			signatureMap.appId = wechat_cfg.appid;
+			signatureMap.UserId = body.UserId;
 			res.render('index',{"signatureMap":signatureMap});
 		});
 	});
