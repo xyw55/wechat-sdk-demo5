@@ -21,8 +21,9 @@ function getToken(tokenUrl){
     var token;
 
     //先看是否有token缓存，这里选择用文件缓存，可以用其他的持久存储作为缓存
-    if(fs.existsSync('token.dat')){
-      token = JSON.parse(fs.readFileSync('token.dat'));
+    if(fs.existsSync('token1.dat')){
+      token = JSON.parse(fs.readFileSync('token1.dat'));
+      console.log(token);
     }
 
     //如果没有缓存或者过期
@@ -35,7 +36,7 @@ function getToken(tokenUrl){
         //更新token并缓存
         //因为access_token的有效期是7200秒，每天可以取2000次
         //所以差不多缓存7000秒左右肯定是够了
-        fs.writeFileSync('token.dat', JSON.stringify(result));
+        fs.writeFileSync('token1.dat', JSON.stringify(result));
         resolve(result);
       });      
     }else{
