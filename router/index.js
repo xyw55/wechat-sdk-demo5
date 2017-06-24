@@ -9,7 +9,7 @@ exports.init = function (app) {
 	var appID = wechat_cfg.appid;
 	var appSecret = wechat_cfg.secret;
 
-	var getToken = require('./token').getToken;
+	var getToken = require('../sign/token').getToken;
 
 	
 	app.get('/',function(req,res){
