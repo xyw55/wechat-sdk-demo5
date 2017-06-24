@@ -61,7 +61,7 @@ exports.init = function (app) {
 
 
 
-    app.get('/location',function(req,res){
+    app.post('/location',function(req,res){
 		//var url = req.protocol + '://' + req.host + req.path;
 		var url = req.protocol + '://' + req.host + req.originalUrl; //获取当前url
 		console.log(url);

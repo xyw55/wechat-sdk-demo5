@@ -110,8 +110,7 @@ wx.ready(function(){
           isAtPku = true;
         }
         var inputdata = {"userId": userId, "location": isAtPku};
-        var host = location.hostname;
-        $.StandardPost("http://" + host + "/location",inputdata);
+        $.StandardPost("/location",inputdata);
       },
       cancel: function (res) {
         console.log(JSON.stringify(res));
