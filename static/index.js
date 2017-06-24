@@ -132,20 +132,20 @@ wx.ready(function(){
     wx.scanQRCode();
   };
 
-  $.extend({
-    StandardPost:function(url,args){
-        var form = $("<form method='post'></form>"),
-            input;
-        form.attr({"action":url});
-        $.each(args,function(key,value){
-            input = $("<input type='hidden'>");
-            input.attr({"name":key});
-            input.val(value);
-            form.append(input);
-        });
-        form.submit();
-    }
-  });
+  // $.extend({
+  //   StandardPost:function(url,args){
+  //       var form = $("<form method='post'></form>"),
+  //           input;
+  //       form.attr({"action":url});
+  //       $.each(args,function(key,value){
+  //           input = $("<input type='hidden'>");
+  //           input.attr({"name":key});
+  //           input.val(value);
+  //           form.append(input);
+  //       });
+  //       form.submit();
+  //   }
+  // });
 
   document.querySelector('#post').onclick = function () {
     wx.getLocation({
@@ -153,7 +153,7 @@ wx.ready(function(){
         // alert(JSON.stringify(res));
         console.log(JSON.stringify(res));
         var inputdata = {"userId":"111", "res": JSON.stringify(res)};
-        $.StandardPost("/location",inputdata);
+        // $.StandardPost("/location",inputdata);
       },
       cancel: function (res) {
         console.log(JSON.stringify(res));
