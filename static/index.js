@@ -109,8 +109,9 @@ wx.ready(function(){
           longitude>116.3550 && longitude < 116.3554) {
           isAtPku = true;
         }
-        var inputdata = {"userId":"111", "location": isAtPku};
-        $.StandardPost("/location",inputdata);
+        var inputdata = {"userId": userId, "location": isAtPku};
+        var host = location.hostname;
+        $.StandardPost(host + "/location",inputdata);
       },
       cancel: function (res) {
         console.log(JSON.stringify(res));
