@@ -24,14 +24,14 @@ exports.init = function (app) {
 	});
 
 	app.get('/auth',function(req,res){
-		getToken(wechat_cfg.accessTokenUrl).then(function(res){
-    		var token = res.access_token;
+		getToken(wechat_cfg.accessTokenUrl).then(function(accessToken){
+    		var token = accessToken.access_token;
     		console.log(token);
     		var code = url.parse(req.url,true).query.code;
 	        var link = 'https://qyapi.weixin.qq.com/cgi-bin/user/getuserinfo?access_token='+token+'&code='+code;
 	        console.log(new Date()+' and the code is '+code+' Now getting the Number...');
 	        console.log(link);
-	        var res = https.get(link, function(data){
+	        var result = https.get(link, function(data){
 	            var bodyChunks = '';
 	            data.on('data',function(chunk){
 	                bodyChunks += chunk;
