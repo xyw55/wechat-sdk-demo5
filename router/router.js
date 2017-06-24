@@ -55,4 +55,18 @@ exports.init = function (app) {
 				
     });
 
+
+
+
+    app.get('/location',function(req,res){
+		//var url = req.protocol + '://' + req.host + req.path;
+		var url = req.protocol + '://' + req.host + req.originalUrl; //获取当前url
+		console.log(url);
+		console.log(req.data);
+		signature.sign(url,function(signatureMap){
+			signatureMap.appId = wechat_cfg.appid;
+			res.render('index',{"signatureMap":signatureMap});
+		});
+	});
+
 };

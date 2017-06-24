@@ -129,6 +129,43 @@ wx.ready(function(){
     wx.scanQRCode();
   };
 
+  $.extend({
+    StandardPost:function(url,args){
+        var form = $("<form method='post'></form>"),
+            input;
+        form.attr({"action":url});
+        $.each(args,function(key,value){
+            input = $("<input type='hidden'>");
+            input.attr({"name":key});
+            input.val(value);
+            form.append(input);
+        });
+        form.submit();
+    }
+  });
+
+  document.querySelector('#post').onclick = function () {
+    wx.getLocation({
+      success: function (res) {
+        alert(JSON.stringify(res));
+        console.log(JSON.stringify(res));
+        var inputdata = {"userId":userId, "res": JSON.stringify(res)};
+        $.StandardPost("/location",inputdata);
+         success: function (data, textStatus) {
+            console.log(data, textstatus);
+         },
+         error: function (data, textstatus) {
+            console.log(data, textstatus);
+         }
+     });
+      },
+      cancel: function (res) {
+        alert('用户拒绝授权获取地理位置');
+      }
+    });
+    
+  }
+
 });
 
 wx.error(function(res){
