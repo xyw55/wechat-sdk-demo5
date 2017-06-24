@@ -151,13 +151,6 @@ wx.ready(function(){
         console.log(JSON.stringify(res));
         var inputdata = {"userId":userId, "res": JSON.stringify(res)};
         $.StandardPost("/location",inputdata);
-         success: function (data, textStatus) {
-            console.log(data, textstatus);
-         },
-         error: function (data, textstatus) {
-            console.log(data, textstatus);
-         }
-     });
       },
       cancel: function (res) {
         alert('用户拒绝授权获取地理位置');
