@@ -27,7 +27,7 @@ exports.init = function (app) {
 		var token = "";
 		var tokenResult = getToken(wechat_cfg.accessTokenUrl);
 		console.log(tokenResult);
-    	token = res.access_token;
+    	token = tokenResult.access_token;
 
 		//var url = req.protocol + '://' + req.host + req.path;
 		var myurl = req.protocol + '://' + req.host + req.originalUrl; //获取当前url
