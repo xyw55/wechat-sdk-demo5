@@ -16,6 +16,7 @@ var request = require('request');
 var fs = require('fs');
 
 function getToken(tokenUrl){
+  console.log(tokenUrl);
   return new Promise(function(resolve, reject){
     var token;
 
@@ -26,6 +27,7 @@ function getToken(tokenUrl){
 
     //如果没有缓存或者过期
     if(!token || token.timeout < Date.now()){
+      console.log(tokenUrl);
       request(tokenUrl, function(err, res, data){
         console.log(tokenUrl);
         var result = JSON.parse(data);
