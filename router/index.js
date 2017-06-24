@@ -24,39 +24,37 @@ exports.init = function (app) {
 	});
 
 	app.get('/auth',function(req,res){
-		var token = "";
-		var tokenResult = getToken(wechat_cfg.accessTokenUrl);
-		console.log(tokenResult);
-    	token = tokenResult.access_token;
+		getToken(wechat_cfg.accessTokenUrl).then(function(res){
+    		var token = res.access_token;
+    		console.log(token);
+    		var code = url.parse(req.url,true).query.code;
+	        var link = 'https://qyapi.weixin.qq.com/cgi-bin/user/getuserinfo?access_token='+token+'&code='+code;
+	        console.log(new Date()+' and the code is '+code+' Now getting the Number...');
+	        console.log(link);
+	        var res = https.get(link, function(data){
+	            var bodyChunks = '';
+	            data.on('data',function(chunk){
+	                bodyChunks += chunk;
+	            });
+	            data.on('end',function(){
+	                var body = JSON.parse(bodyChunks);
+	                console.log(body);
+	                if (body.UserId) {
+	                    req.session.No = body.UserId;
+	                    console.log(req.session.No);
+	                    signature.sign(url, function(signatureMap){
+							signatureMap.appId = wechat_cfg.appid;
+							signatureMap.UserId = body.UserId;
+							res.render('index',{"signatureMap":signatureMap});
+						});
+	                }else{
+	                    console.dir(body);
+	                }
+	            });
+			});
 
-		//var url = req.protocol + '://' + req.host + req.path;
-		var myurl = req.protocol + '://' + req.host + req.originalUrl; //获取当前url
-		console.log(myurl);
-		var code = url.parse(req.url,true).query.code;
-        var link = 'https://qyapi.weixin.qq.com/cgi-bin/user/getuserinfo?access_token='+token+'&code='+code;
-        console.log(new Date()+' and the code is '+code+' Now getting the Number...');
-        console.log(link);
-        var res = https.get(link, function(data){
-            var bodyChunks = '';
-            data.on('data',function(chunk){
-                bodyChunks += chunk;
-            });
-            data.on('end',function(){
-                var body = JSON.parse(bodyChunks);
-                console.log(body);
-                if (body.UserId) {
-                    req.session.No = body.UserId;
-                    console.log(req.session.No);
-                    signature.sign(url, function(signatureMap){
-						signatureMap.appId = wechat_cfg.appid;
-						signatureMap.UserId = body.UserId;
-						res.render('index',{"signatureMap":signatureMap});
-					});
-                }else{
-                    console.dir(body);
-                }
-            });
-		});
+    	});
+				
     });
 
 };
