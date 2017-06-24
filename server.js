@@ -27,5 +27,5 @@ app.listen(port, function() {
 
 
 //启动路由分发
-require('./router/index').init(app);
+require('./router/router').init(app);
 
