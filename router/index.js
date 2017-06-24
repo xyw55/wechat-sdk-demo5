@@ -6,6 +6,10 @@ exports.init = function (app) {
 	//var url = require('url');
 	var signature = require('../sign/signature');
 	var url = require('url');
+	var appID = wechat_cfg.appid;
+	var appSecret = wechat_cfg.secret;
+
+	var getToken = require('./token').getToken;
 
 	
 	app.get('/',function(req,res){
@@ -19,6 +23,11 @@ exports.init = function (app) {
 	});
 
 	app.get('/auth',function(req,res){
+		var token = "";
+		getToken(appID, appSecret).then(function(res){
+    		token = res.access_token;
+    	});
+
 		//var url = req.protocol + '://' + req.host + req.path;
 		var myurl = req.protocol + '://' + req.host + req.originalUrl; //获取当前url
 		console.log(myurl);
