@@ -41,7 +41,8 @@ exports.init = function (app) {
 	                console.log(body);
 	                if (body.UserId) {
 						var sign_url = req.protocol + '://' + req.host + req.originalUrl; //获取当前url
-						console.log(sign_url);
+						console.log(sign_url,req.originalUrl);
+						sign_url = "http://weixin.xyw55.com/"
 	                    signature.sign(sign_url, function(signatureMap){
 							signatureMap.appId = wechat_cfg.appid;
 							signatureMap.UserId = body.UserId;
