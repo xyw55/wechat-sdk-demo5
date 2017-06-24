@@ -25,7 +25,7 @@ exports.init = function (app) {
 
 	app.get('/auth',function(req,res){
 		var token = "";
-		getToken(wechat_cfg.url).then(function(res){
+		getToken(wechat_cfg.accessTokenUrl).then(function(res){
     		token = res.access_token;
     		console.log(res, token);
     	});
