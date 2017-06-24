@@ -17,4 +17,11 @@ exports.init = function (app) {
 		});
 	});
 
+	app.get('/auth',function(req,res){
+		//var url = req.protocol + '://' + req.host + req.path;
+		var url = req.protocol + '://' + req.host + req.originalUrl; //获取当前url
+		console.log(url, req);
+		
+	});
+
 };
