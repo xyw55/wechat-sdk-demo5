@@ -18,7 +18,7 @@ exports.sign = function (url,callback) {
 			signature:sha1('jsapi_ticket=' + jsapi_ticket + '&noncestr=' + noncestr + '&timestamp=' + timestamp + '&url=' + url)
 		});
 	}else{
-		request(config.accessTokenUrl + '?grant_type=' + config.grant_type + '&appid=' + config.appid + '&secret=' + config.secret ,function(error, response, body){
+		request(config.accessTokenUrl ,function(error, response, body){
 			if (!error && response.statusCode == 200) {
 				var tokenMap = JSON.parse(body);
 				request(config.ticketUrl + '?access_token=' + tokenMap.access_token + '&type=jsapi', function(error, resp, json){

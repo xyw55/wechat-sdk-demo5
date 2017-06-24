@@ -16,7 +16,7 @@ exports.init = function (app) {
 	app.get('/',function(req,res){
 		//var url = req.protocol + '://' + req.host + req.path;
 		var url = req.protocol + '://' + req.host + req.originalUrl; //获取当前url
-		console.log(req);
+		console.log(url, req);
 		signature.sign(url,function(signatureMap){
 			signatureMap.appId = wechat_cfg.appid;
 			res.render('index',{"signatureMap":signatureMap});
@@ -40,7 +40,9 @@ exports.init = function (app) {
 	                var body = JSON.parse(bodyChunks);
 	                console.log(body);
 	                if (body.UserId) {
-	                    signature.sign(url, function(signatureMap){
+						var sign_url = req.protocol + '://' + req.host + req.originalUrl; //获取当前url
+						console.log(sign_url);
+	                    signature.sign(sign_url, function(signatureMap){
 							signatureMap.appId = wechat_cfg.appid;
 							signatureMap.UserId = body.UserId;
 							res.render('index',{"signatureMap":signatureMap});
