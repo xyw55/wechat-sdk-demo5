@@ -65,7 +65,7 @@ exports.init = function (app) {
 		//var url = req.protocol + '://' + req.host + req.path;
 		var url = req.protocol + '://' + req.host + req.originalUrl; //获取当前url
 		console.log(url);
-		console.log(req.data);
+		console.log(req);
 		signature.sign(url,function(signatureMap){
 			signatureMap.appId = wechat_cfg.appid;
 			res.render('index',{"signatureMap":signatureMap});
