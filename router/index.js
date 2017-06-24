@@ -45,6 +45,6 @@ exports.init = function (app) {
                 }
             });
 		});
-    }
+    });
 
 };
