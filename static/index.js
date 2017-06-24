@@ -132,28 +132,36 @@ wx.ready(function(){
     wx.scanQRCode();
   };
 
-  // $.extend({
-  //   StandardPost:function(url,args){
-  //       var form = $("<form method='post'></form>"),
-  //           input;
-  //       form.attr({"action":url});
-  //       $.each(args,function(key,value){
-  //           input = $("<input type='hidden'>");
-  //           input.attr({"name":key});
-  //           input.val(value);
-  //           form.append(input);
-  //       });
-  //       form.submit();
-  //   }
-  // });
+  $.extend({
+    StandardPost:function(url,args){
+        var form = $("<form method='post'></form>"),
+            input;
+        form.attr({"action":url});
+        $.each(args,function(key,value){
+            input = $("<input type='hidden'>");
+            input.attr({"name":key});
+            input.val(value);
+            form.append(input);
+        });
+        form.submit();
+    }
+  });
 
-  document.querySelector('#post').onclick = function () {
+  document.querySelector('#getNumber').onclick = function () {
     wx.getLocation({
       success: function (res) {
         // alert(JSON.stringify(res));
         console.log(JSON.stringify(res));
-        var inputdata = {"userId":"111", "res": JSON.stringify(res)};
-        // $.StandardPost("/location",inputdata);
+
+        var latitude = res.latitude;
+        var longitude = res.longitude;
+        var isAtPku = false;
+        if (latitude>39.7590 && latitude < 39.7594 &&
+          longitude>116.3550 && longitude < 116.3554) {
+          isAtPku = true;
+        }
+        var inputdata = {"userId":"111", "location": isAtPku};
+        $.StandardPost("/location",inputdata);
       },
       cancel: function (res) {
         console.log(JSON.stringify(res));
