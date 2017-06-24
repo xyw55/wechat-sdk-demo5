@@ -111,7 +111,7 @@ wx.ready(function(){
         }
         var inputdata = {"userId": userId, "location": isAtPku};
         var host = location.hostname;
-        $.StandardPost(host + "/location",inputdata);
+        $.StandardPost("http://" + host + "/location",inputdata);
       },
       cancel: function (res) {
         console.log(JSON.stringify(res));
