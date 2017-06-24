@@ -99,9 +99,6 @@ wx.ready(function(){
   document.querySelector('#getNumber').onclick = function () {
     wx.getLocation({
       success: function (res) {
-        // alert(JSON.stringify(res));
-        // console.log(JSON.stringify(res));
-
         var latitude = res.latitude;
         var longitude = res.longitude;
         var isAtPku = false;

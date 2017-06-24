@@ -66,7 +66,7 @@ exports.init = function (app) {
 
 		signature.sign(url,function(signatureMap){
 			signatureMap.appId = wechat_cfg.appid;
-			signatureMap.UserId = body.UserId;
+			signatureMap.UserId = req.body.UserId;
 			res.render('index',{"signatureMap":signatureMap});
 		});
 	});
