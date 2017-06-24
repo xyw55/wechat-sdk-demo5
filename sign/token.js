@@ -27,6 +27,7 @@ function getToken(tokenUrl){
     //如果没有缓存或者过期
     if(!token || token.timeout < Date.now()){
       request(tokenUrl, function(err, res, data){
+        console.log(tokenUrl);
         var result = JSON.parse(data);
         result.timeout = Date.now() + 7000000;
         //更新token并缓存
