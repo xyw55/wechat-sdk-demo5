@@ -40,8 +40,6 @@ exports.init = function (app) {
 	                var body = JSON.parse(bodyChunks);
 	                console.log(body);
 	                if (body.UserId) {
-	                    req.session.No = body.UserId;
-	                    console.log(req.session.No);
 	                    signature.sign(url, function(signatureMap){
 							signatureMap.appId = wechat_cfg.appid;
 							signatureMap.UserId = body.UserId;
