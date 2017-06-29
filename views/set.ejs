@@ -1,19 +1,15 @@
 <%- include header%>
     <div class="panel">
         <br>
+        <br>
+        <br>
+        <br>
         <div align="center">
             <form method='post' action="/set" align="center">
-                <div class="form-group">
-                <h4>区间左边界</h4>
-                    <input type="text" class="form-control" name="min" placeholder="区间左边界">
-                </div>
-                <div class="form-group">
-                <h4>区间右边界</h4>
-                    <input type="text" class="form-control" name="max" placeholder="区间右边界">
-                </div>
+                <button>点击向后叫号</button>
+        <br>
                 <h4>当前报道区间:(<%= min%>, <%= max%>)</h4>
                 <br>
-                <button>设置</button>
             </form>
         </div>
     </div>
